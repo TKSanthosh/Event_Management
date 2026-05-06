@@ -1,0 +1,326 @@
+{
+  "info": {
+    "name": "Event Management System",
+    "description": "Complete API collection for the Event Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000/api" },
+    { "key": "token", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/auth/register",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Admin User\",\n  \"email\": \"admin@example.com\",\n  \"password\": \"password123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "if (res.data && res.data.token) {",
+                  "  pm.collectionVariables.set('token', res.data.token);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/auth/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@example.com\",\n  \"password\": \"password123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Me",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/auth/me"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Venues",
+      "item": [
+        {
+          "name": "Get All Venues",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/venues"
+          }
+        },
+        {
+          "name": "Create Venue",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/venues",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Grand Convention Center\",\n  \"address\": \"100 Main St\",\n  \"city\": \"New York\",\n  \"capacity\": 500\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Venue by ID",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/venues/:id"
+          }
+        },
+        {
+          "name": "Update Venue",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/venues/:id",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Grand Convention Center\",\n  \"address\": \"100 Main St\",\n  \"city\": \"New York\",\n  \"capacity\": 600\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Venue",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/venues/:id"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Organizers",
+      "item": [
+        {
+          "name": "Get All Organizers",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/organizers"
+          }
+        },
+        {
+          "name": "Create Organizer",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/organizers",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Sarah Johnson\",\n  \"email\": \"sarah@eventspro.com\",\n  \"phone\": \"+1 555 100 2000\",\n  \"organizationName\": \"EventsPro Inc.\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Organizer by ID",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/organizers/:id"
+          }
+        },
+        {
+          "name": "Update Organizer",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/organizers/:id",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Sarah Johnson\",\n  \"email\": \"sarah@eventspro.com\",\n  \"phone\": \"+1 555 100 2000\",\n  \"organizationName\": \"EventsPro International\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Organizer",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/organizers/:id"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Events",
+      "item": [
+        {
+          "name": "Get All Events",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/events"
+          }
+        },
+        {
+          "name": "Get Events by Status",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{baseUrl}}/events?status=upcoming",
+              "query": [{ "key": "status", "value": "upcoming" }]
+            }
+          }
+        },
+        {
+          "name": "Create Event",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/events",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Annual Tech Summit 2025\",\n  \"description\": \"A flagship technology conference.\",\n  \"date\": \"2025-09-15\",\n  \"startTime\": \"09:00\",\n  \"endTime\": \"17:00\",\n  \"venue\": \"<VENUE_ID>\",\n  \"organizer\": \"<ORGANIZER_ID>\",\n  \"maxAttendees\": 200,\n  \"status\": \"upcoming\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Event by ID",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/events/:id"
+          }
+        },
+        {
+          "name": "Update Event",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/events/:id",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Annual Tech Summit 2025\",\n  \"description\": \"Updated description.\",\n  \"date\": \"2025-09-15\",\n  \"startTime\": \"09:00\",\n  \"endTime\": \"18:00\",\n  \"venue\": \"<VENUE_ID>\",\n  \"organizer\": \"<ORGANIZER_ID>\",\n  \"maxAttendees\": 250,\n  \"status\": \"upcoming\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Event",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/events/:id"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Attendees",
+      "item": [
+        {
+          "name": "Get All Attendees",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/attendees"
+          }
+        },
+        {
+          "name": "Create Attendee",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/attendees",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Alice Chen\",\n  \"email\": \"alice@example.com\",\n  \"phone\": \"+1 555 001 0001\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Attendee by ID",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/attendees/:id"
+          }
+        },
+        {
+          "name": "Update Attendee",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/attendees/:id",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Alice Chen\",\n  \"email\": \"alice@example.com\",\n  \"phone\": \"+1 555 001 9999\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Attendee",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/attendees/:id"
+          }
+        },
+        {
+          "name": "Register Attendee for Event",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/attendees/:id/register/:eventId"
+          }
+        },
+        {
+          "name": "Cancel Attendee Registration",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/attendees/:id/cancel/:eventId"
+          }
+        }
+      ]
+    }
+  ]
+}
