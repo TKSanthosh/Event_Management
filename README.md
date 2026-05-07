@@ -300,17 +300,6 @@ registeredEvents  [ObjectId → Event]
 
 ---
 
-## Screenshots
-
-> *Add screenshots here after running the application.*
-
-- `[ Dashboard — summary cards ]`
-- `[ Events page — table + modal form ]`
-- `[ Attendees page — registration modal ]`
-- `[ Venues page ]`
-- `[ Login page ]`
-
----
 
 ## Future Improvements
 
