@@ -299,7 +299,39 @@ registeredEvents  [ObjectId → Event]
 - `Event.attendees` ↔ `Attendee.registeredEvents` (bidirectional, managed in service layer)
 
 ---
+## Screenshots
 
+Dashboard
+<img width="1919" height="994" alt="image" src="https://github.com/user-attachments/assets/aa7e55ad-1a5c-4d51-917a-3bb5087a0bf6" />
+
+Events
+<img width="1919" height="991" alt="image" src="https://github.com/user-attachments/assets/7e4b0a81-73ac-4638-af60-4f08e9474e65" />
+
+Add Events
+<img width="1919" height="998" alt="image" src="https://github.com/user-attachments/assets/fe16fca1-e779-48c2-a36d-b8e7fc02cb44" />
+
+Attendees
+<img width="1919" height="998" alt="image" src="https://github.com/user-attachments/assets/b9a8bc3a-5a24-48a0-ba51-daa5b0e114c2" />
+
+Event Registration
+<img width="1912" height="996" alt="image" src="https://github.com/user-attachments/assets/1f853ff5-8078-4ff6-aeca-fa281d96d86c" />
+
+Add Attendee
+<img width="1919" height="1003" alt="image" src="https://github.com/user-attachments/assets/e9f2d56b-6873-4566-b93c-1d50a7ad5d0f" />
+
+Venues
+<img width="1919" height="996" alt="image" src="https://github.com/user-attachments/assets/5d09a909-a55f-4647-9a9a-346162e76458" />
+
+Add Venue
+<img width="1919" height="1001" alt="image" src="https://github.com/user-attachments/assets/fa52837d-28e1-4b3b-a7ce-2392961936cf" />
+
+Organizers
+<img width="1918" height="996" alt="image" src="https://github.com/user-attachments/assets/b933cda1-d3e1-4828-8adb-f7887e28f8fa" />
+
+Add Organizers
+<img width="1919" height="994" alt="image" src="https://github.com/user-attachments/assets/793ad456-2bb2-472e-9b84-3c7d9042b5a2" />
+
+---
 
 ## Future Improvements
 
